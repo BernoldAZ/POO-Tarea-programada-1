@@ -55,7 +55,8 @@ public class TFIDF {
         List<List<String>> documents = Arrays.asList(doc1, doc2, doc3);
 
         TFIDF calculator = new TFIDF();
-        double tfidf = calculator.tfIdf(doc1, documents, "ipsum");
+        String s = "ipsum";
+        double tfidf = calculator.tfIdf(doc1, documents, s);
         System.out.println("TF-IDF (ipsum) = " + tfidf);
 
 
