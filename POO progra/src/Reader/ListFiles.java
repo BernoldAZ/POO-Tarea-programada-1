@@ -5,10 +5,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ListFiles {
+	private static List<String> list_final;
 
     public static List<String> getFiles( String dir_path ) {
 
-    	List<String> array_final = new ArrayList<String>();;
+    	List<String> array_final = new ArrayList<String>();
         File file = new File( dir_path );
         
         if ( file.isDirectory( )) {
@@ -26,6 +27,7 @@ public class ListFiles {
             array_final.addAll(res);
         } else
             System.err.println( "¡ Path NO válido !" );
+        list_final = array_final;
         return array_final;
     }
     
@@ -47,6 +49,8 @@ public class ListFiles {
                 System.out.println( files.get(i) );
             }
         }
-    }
-    */
+        System.out.println(list_final);
+        
+    }*/
+    
 }

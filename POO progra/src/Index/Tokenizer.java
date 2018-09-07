@@ -1,28 +1,41 @@
 package Index;
 
 import java.util.StringTokenizer;
+import java.util.HashMap;
 import java.util.List;
 
 public class Tokenizer {
 	
-	public static List<String> BagOfWords(String line, List<String> list) {
-		StringTokenizer tokens=new StringTokenizer(line);
-		 while(tokens.hasMoreTokens()){
-			 list.add(tokens.nextToken());
-		 }
-		 return list;
+	int numOfWords;
+	String[] wordVector;
+	
+	public Tokenizer (String[] docs) {
+		HashMap<String, Integer> mapWordToIdx = new HashMap<>();
+        int nextIdx = 0;
+        for (String doc : docs) {
+            for (String word : doc.split(" ")) {
+                if (!mapWordToIdx.containsKey(word)) {
+                    mapWordToIdx.put(word, nextIdx);
+                    nextIdx++;
+                }
+            }
+        }
+        numOfWords = mapWordToIdx.size();
+        
+        wordVector = new String[numOfWords];
+        for (String word : mapWordToIdx.keySet()) {
+            int wordIdx = mapWordToIdx.get(word);
+            wordVector[wordIdx] = word;
+        }
 	}
 	/*
 	public static void main(String[] args) {
-	    String nombre="Angel Franco García";
-	    StringTokenizer tokens=new StringTokenizer(nombre);
-        while(tokens.hasMoreTokens()){
-            System.out.println(tokens.nextToken());
+		String[] docs = new String[]{"this is a a sample of example", "this is another another example example which example"};
+        TF_IDF tf_idf = new TF_IDF(docs);
+        for (String s : tf_idf.getWordVector()) {
+            System.out.print(s + " ");
         }
-        
-        List<String> doc1 = Arrays.asList(nombre);
-        System.out.println(BagOfWords(nombre, doc1));
-	}
-	*/
+	
+	}*/
 }
 
